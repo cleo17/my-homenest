@@ -3,7 +3,7 @@
 // Your GitHub repository name — used as the URL base path on GitHub Pages
 // e.g. if your site is https://yourusername.github.io/homenest  → set to 'homenest'
 // e.g. if your site is https://yourusername.github.io/          → set to ''
-const REPO_NAME = process.env.REPO_NAME || 'homenest'
+const REPO_NAME = process.env.REPO_NAME || 'my-homenest'
 
 const isProd = process.env.NODE_ENV === 'production'
 

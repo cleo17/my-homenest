@@ -18,7 +18,7 @@
     "react-hot-toast": "^2.4.1",
     "date-fns": "^3.6.0",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.379.0",
+    "lucide-react": "^0.511.0",
     "js-cookie": "^3.0.5"
   },
   "devDependencies": {

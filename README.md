@@ -31,7 +31,7 @@
 
 ```bash
 # 1. Clone or download this repo
-git clone https://github.com/YOUR_USERNAME/homenest.git
+git clone https://github.com/cleo17/my-homenest.git
 cd homenest/frontend
 
 # 2. Install dependencies (takes ~1 minute)
@@ -91,6 +91,19 @@ frontend/
 
 ---
 
+## Deploy to GitHub Pages (live demo)
+
+Phase 1 deploys as a **static site** — no database, no backend, no API keys.
+
+1. Push to the `main` branch (see below).
+2. In your repo on GitHub: **Settings → Pages → Build and deployment → Source** → choose **GitHub Actions**.
+3. Every push to `main` runs `.github/workflows/deploy.yml` and publishes to:
+   - `https://cleo17.github.io/my-homenest/`
+
+The workflow reads your repo name automatically for asset paths (`REPO_NAME`).
+
+---
+
 ## Pushing to GitHub
 
 ### First time setup
@@ -101,9 +114,9 @@ git init
 git add .
 git commit -m "feat: Phase 1 - HomeNest frontend with mock data"
 
-# Create a repo on GitHub (github.com → New repository → name: homenest)
+# Create a repo on GitHub (github.com → New repository → name: my-homenest)
 # Then:
-git remote add origin https://github.com/YOUR_USERNAME/homenest.git
+git remote add origin https://github.com/cleo17/my-homenest.git
 git branch -M main
 git push -u origin main
 ```
@@ -123,7 +136,7 @@ git push
 Once pushed, teammates can run the site with:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/homenest.git
+git clone https://github.com/cleo17/my-homenest.git
 cd homenest/frontend
 npm install
 npm run dev

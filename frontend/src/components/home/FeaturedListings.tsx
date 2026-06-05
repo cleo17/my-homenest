@@ -1,14 +1,28 @@
+'use client'
 import Link from 'next/link'
 import { MapPin, Bed, Bath, Maximize, Heart, ArrowRight } from 'lucide-react'
+import { mockListings } from '@/lib/mockData'
 
-const LISTINGS = [
-  { id: 1, title: 'Luxury Downtown Apartment', price: 2850, location: 'Austin, TX 78701', type: 'Apartment', beds: 2, baths: 2, sqft: 1200, badge: 'featured', emoji: '🏙️', color: 'from-[#2C5364] to-[#203A43]' },
-  { id: 2, title: 'Spacious Family Home with Garden', price: 3400, location: 'Denver, CO 80202', type: 'Family Home', beds: 4, baths: 3, sqft: 2400, badge: 'new', emoji: '🏡', color: 'from-[#1A3C34] to-[#2E7D52]' },
-  { id: 3, title: 'Modern Ocean-View Condo', price: 4200, location: 'Miami, FL 33101', type: 'Apartment', beds: 3, baths: 2, sqft: 1800, badge: 'hot', emoji: '🏖️', color: 'from-[#1B2A4A] to-[#2D5BE3]' },
-  { id: 4, title: 'Cozy Student Studio near UT', price: 950, location: 'Austin, TX 78712', type: 'Student Housing', beds: 0, baths: 1, sqft: 480, badge: 'featured', emoji: '🎓', color: 'from-[#4A1942] to-[#C06C84]' },
-  { id: 5, title: 'Rustic Mountain Retreat Cabin', price: 2100, location: 'Aspen, CO 81611', type: 'Vacation Rental', beds: 3, baths: 2, sqft: 1600, badge: 'new', emoji: '🏔️', color: 'from-[#3D2B1F] to-[#8B5E3C]' },
-  { id: 6, title: 'Charming Urban Guest House', price: 1500, location: 'Portland, OR 97201', type: 'Guest House', beds: 1, baths: 1, sqft: 650, badge: 'hot', emoji: '🏠', color: 'from-[#2D1B69] to-[#7B2FBE]' },
-]
+const CARD_STYLES = [
+  { badge: 'featured', emoji: '🏙️', color: 'from-[#2C5364] to-[#203A43]' },
+  { badge: 'new', emoji: '🏡', color: 'from-[#1A3C34] to-[#2E7D52]' },
+  { badge: 'hot', emoji: '🏖️', color: 'from-[#1B2A4A] to-[#2D5BE3]' },
+  { badge: 'featured', emoji: '🎓', color: 'from-[#4A1942] to-[#C06C84]' },
+  { badge: 'new', emoji: '🏔️', color: 'from-[#3D2B1F] to-[#8B5E3C]' },
+  { badge: 'hot', emoji: '🏠', color: 'from-[#2D1B69] to-[#7B2FBE]' },
+] as const
+
+const LISTINGS = mockListings.slice(0, 6).map((listing, index) => ({
+  id: listing.id,
+  title: listing.title,
+  price: listing.monthlyRent,
+  location: `${listing.city}, ${listing.state} ${listing.zipCode}`,
+  type: listing.category.replace('-', ' '),
+  beds: listing.bedrooms,
+  baths: listing.bathrooms,
+  sqft: listing.sqft ?? 0,
+  ...CARD_STYLES[index],
+}))
 
 const badgeClass: Record<string, string> = {
   featured: 'badge-featured',
